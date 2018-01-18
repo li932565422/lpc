@@ -15,13 +15,17 @@
 	<a-scene stats embedded arjs='sourceType: webcam; detectionMode: mono; maxDetectionRate: 30; canvasWidth: 240; canvasHeight: 180'>
 
 	<a-assets>
-    <a-asset-item id="crate-obj" src="female02/crate.obj"></a-asset-item>
-    <a-asset-item id="crate-mtl" src="female02/crate.mtl"></a-asset-item>
+    <a-asset-item id="male02-obj" src="male02/male02.obj"></a-asset-item>
+    <a-asset-item id="male02-mtl" src="male02/male02.mtl"></a-asset-item>
   </a-assets>
   <!-- Using the asset management system. -->
+<<<<<<< HEAD
 
   <a-marker-camera preset='hiro'>
   <a-obj-model src="#crate-obj" mtl="#crate-mtl"   position="0 0.7 0"  rotation="-90 0 0" scale="0.01 0.01 0.01"></a-obj-model>
+=======
+  <a-obj-model src="#male02-obj" mtl="#male02-mtl"   position="0 0.6 0"  rotation="-90 0 0" scale="0.01 0.01 0.01"></a-obj-model>
+>>>>>>> 313a9c33f0324e5e5bc4d544aa28b7e5808664f5
 
 		<!-- define the object which gonna be put on this marker  -->
 		<!-- <a-box position='0 0.5 0' material='opacity: 0.5; side: double'>
