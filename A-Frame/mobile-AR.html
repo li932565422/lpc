@@ -19,7 +19,9 @@
     <a-asset-item id="crate-mtl" src="female02/crate.mtl"></a-asset-item>
   </a-assets>
   <!-- Using the asset management system. -->
-  <a-obj-model src="#crate-obj" mtl="#crate-mtl"   position="0 0.5 0"  rotation="-90 0 0" scale="0.01 0.01 0.01"></a-obj-model>
+
+  <a-marker-camera preset='hiro'>
+  <a-obj-model src="#crate-obj" mtl="#crate-mtl"   position="0 0.7 0"  rotation="-90 0 0" scale="0.01 0.01 0.01"></a-obj-model>
 
 		<!-- define the object which gonna be put on this marker  -->
 		<!-- <a-box position='0 0.5 0' material='opacity: 0.5; side: double'>
@@ -28,7 +30,7 @@
 			</a-torus-knot>
 		</a-box> -->
 				
-		<a-marker-camera preset='hiro'></a-marker-camera>
+		</a-marker-camera>
 	</a-scene>
 </body>
 </html>
