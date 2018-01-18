@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>加载模型</title>
+
+	<script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+</head>
+<body>
+	<a-scene>
+  <a-assets>
+    <a-asset-item id="crate-obj" src="female02/crate.obj"></a-asset-item>
+    <a-asset-item id="crate-mtl" src="female02/crate.mtl"></a-asset-item>
+  </a-assets>
+  <!-- Using the asset management system. -->
+  <a-obj-model src="#crate-obj" mtl="#crate-mtl"   position="0 2 5" scale="0.01 0.01 0.01"></a-obj-model>
+  <!-- Defining the URL inline. Not recommended but may be more comfortable. -->
+ <!--  <a-obj-model src="crate.obj" mtl="crate.mtl"></a-obj-model> -->
+</a-scene>
+</body>
+</html>

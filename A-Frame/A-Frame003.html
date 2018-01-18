@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>视频</title>
+	<script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+</head>
+<body>
+	<a-scene>
+  <a-assets>
+    <video id="penguin-sledding" autoplay loop="true" src="donghua_1_1~1.mp4"></video>
+  </a-assets>
+  <!-- Using the asset management system. -->
+  <a-video src="#penguin-sledding" width="16" height="9" position="0 0 -20"></a-video>
+  <!-- Defining the URL inline. Not recommended but more comfortable for web developers. -->
+  <a-video src="airbending.mp4"></a-video>
+</a-scene>
+
+</body>
+</html>

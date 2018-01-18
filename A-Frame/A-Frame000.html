@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>A-frame</title>
+
+	<script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+  <script src="buildKu/control/OrbitControls.js"></script>
+</head>
+<body>
+	<a-scene>
+  <a-assets>
+    <a-asset-item id="male02-obj" src="male02/male02.obj"></a-asset-item>
+    <a-asset-item id="male02-mtl" src="male02/male02.mtl"></a-asset-item>
+  </a-assets>
+  <!-- Using the asset management system. -->
+  <a-obj-model src="#male02-obj" mtl="#male02-mtl"   position="0 0.5 0"  rotation="0 0 0" scale="0.01 0.01 0.01">
+  </a-obj-model>
+
+   <a-entity  position = "0 0 2.5" >
+  <a-camera  look-controls > </a-camera >
+</a-entity >
+<a-entity id="leftHand"  laser-controls="hand:left" raycaster="objects:[mixin='box']"></a-entity>
+<a-entity id="rightHand"  laser-controls="hand:right" raycaster="objects:[mixin='box']"  line="color:"></a-entity>
+
+
+</a-scene>
+</body>
+</html>
