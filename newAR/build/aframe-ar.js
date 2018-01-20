@@ -1176,7 +1176,7 @@ var Qb=[Ik,Zh,_h,Qj,Qi,Pi,Ri,Ag,sg,qg,rg,yg,kh,jh,Oi,Mj];var Rb=[Jk,ki,ji,gi];va
 			if (navigator.mediaDevices) {
 				navigator.mediaDevices.getUserMedia({
 					audio: false,
-					 { facingMode: { exact: "environment" } }
+					video:  { facingMode: { exact: "environment" } }
 				}).then(success, onError); 
 			} else {
 				MediaStreamTrack.getSources(function(sources) {
