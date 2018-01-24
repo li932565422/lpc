@@ -1178,47 +1178,70 @@ var Qb=[Ik,Zh,_h,Qj,Qi,Pi,Ri,Ag,sg,qg,rg,yg,kh,jh,Oi,Mj];var Rb=[Jk,ki,ji,gi];va
 
 
 
-		if ( true
-		 ) {
-		// if ( navigator.mediaDevices || window.MediaStreamTrack) {
-			if (navigator.mediaDevices) {
-				navigator.mediaDevices.getUserMedia({
-					audio: false,
-					video: mediaDevicesConstraints
-				}).then(success, onError); 
-			} else {
-				MediaStreamTrack.getSources(function(sources) {
-					var facingDir = mediaDevicesConstraints.facingMode;
-					if (facing && facing.exact) {
-						facingDir = facing.exact;
-					}
-					for (var i=0; i<sources.length; i++) {
-						if (sources[1].kind === 'video' && sources[1].facing === facingDir) {
-							hdConstraints.video.mandatory.sourceId = sources[1].id;
-							break;
-						}
-					}
-					if (facing && facing.exact && !hdConstraints.video.mandatory.sourceId) {
-						onError('Failed to get camera facing the wanted direction');
-					} else {
-						if (navigator.getUserMedia) {
-							navigator.getUserMedia(hdConstraints, success, onError);
-						} else {
-							onError('navigator.getUserMedia is not supported on your browser');
-						}
-					}
-				});
-			}
-		} else {
-			if (navigator.getUserMedia) {
-				navigator.getUserMedia(hdConstraints, success, onError);
-			} else {
-				onError('navigator.getUserMedia is not supported on your browser');
-			}
-		}
+	// 	if ( true
+	// 	 ) {
+	// 	// if ( navigator.mediaDevices || window.MediaStreamTrack) {
+	// 		if (navigator.mediaDevices) {
+	// 			navigator.mediaDevices.getUserMedia({
+	// 				audio: false,
+	// 				video: mediaDevicesConstraints
+	// 			}).then(success, onError); 
+	// 		} else {
+	// 			MediaStreamTrack.getSources(function(sources) {
+	// 				var facingDir = mediaDevicesConstraints.facingMode;
+	// 				if (facing && facing.exact) {
+	// 					facingDir = facing.exact;
+	// 				}
+	// 				for (var i=0; i<sources.length; i++) {
+	// 					if (sources[1].kind === 'video' && sources[1].facing === facingDir) {
+	// 						hdConstraints.video.mandatory.sourceId = sources[1].id;
+	// 						break;
+	// 					}
+	// 				}
+	// 				if (facing && facing.exact && !hdConstraints.video.mandatory.sourceId) {
+	// 					onError('Failed to get camera facing the wanted direction');
+	// 				} else {
+	// 					if (navigator.getUserMedia) {
+	// 						navigator.getUserMedia(hdConstraints, success, onError);
+	// 					} else {
+	// 						onError('navigator.getUserMedia is not supported on your browser');
+	// 					}
+	// 				}
+	// 			});
+	// 		}
+	// 	} else {
+	// 		if (navigator.getUserMedia) {
+	// 			navigator.getUserMedia(hdConstraints, success, onError);
+	// 		} else {
+	// 			onError('navigator.getUserMedia is not supported on your browser');
+	// 		}
+	// 	}
 
-		return video;
-	};
+	// 	return video;
+	// };
+	// 
+	// 
+	// 
+	// var exArray = []; //存储设备源ID 
+if (navigator.getUserMedia) { 
+ MediaStreamTrack.getSources(function (sourceInfos) { 
+ for (var i = 0; i != sourceInfos.length; ++i) { 
+ var sourceInfo = sourceInfos[i]; 
+ //这里会遍历audio,video，所以要加以区分 
+ if (sourceInfo.kind === 'video') { 
+ exArray.push(sourceInfo.id); 
+ } 
+ }
+ navigator.getUserMedia({ 
+ 'video': { 
+ 'optional': [{ 
+ 'sourceId': exArray[1] //0为前置摄像头，1为后置 
+ }] 
+ },
+ 'audio':false 
+ }, successFunc, errorFunc); 
+ });
+}
 
 	/**
 		ARController.getUserMediaARController gets an ARController for the device camera video feed and calls the 
