@@ -5,3 +5,5 @@
 
 
 [demo002]( https://li932565422.github.io/lpc/A-Frame/ShouJi.html)
+
+[apk下载]( https://li932565422.github.io/lpc/QiChongGuan.apk)
