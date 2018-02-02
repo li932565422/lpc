@@ -1,8 +1,10 @@
 # lpc
-[apk下载]( https://li932565422.github.io/lpc/QiChongGuan.apk)
+[apk00下载]( https://li932565422.github.io/lpc/QiChongGuan.apk)
+
+[apk01下载]( https://li932565422.github.io/lpc/QiChongGuan1.apk)
 
 
-[apk下载gg]( https://li932565422.github.io/lpc/Girl.apk)
+[呵呵哒下载gg]( https://li932565422.github.io/lpc/Girl.apk)
 
 
 
