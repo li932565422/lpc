@@ -111,7 +111,7 @@ window._CCSettings = {
     "md5AssetsMap": {
         "07/07aa5b28c.json": "7a8af",
         "08/085ea5700.json": "85a07",
-        "09/09d1ac551.json": "cf9f3",
+        "09/09d1ac551.json": "932e5",
         "assets/Texture/bgAudio.wav": "bc0f8",
         "assets/Texture/dici .png": "588fe",
         "assets/Texture/DieAudio.wav": "ff73e",
