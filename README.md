@@ -2,6 +2,8 @@
 
 [apk01下载]( https://li932565422.github.io/lpc/QiChongGuan1.apk)
 
+[微信小程序]( https://li932565422.github.io/lpc/WX/res)
+
 
 [呵呵哒下载gg]( https://li932565422.github.io/lpc/Girl.apk)
 
