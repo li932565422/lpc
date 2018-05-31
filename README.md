@@ -3,7 +3,7 @@
 
 [消屏吧]( https://li932565422.github.io/lpc/XiaoPingBa/index.html)
 
-[消屏吧手机版]( https://li932565422.github.io/lpc/XiaoPingBa/index.html)
+[消屏吧手机版]( https://li932565422.github.io/lpc/XPB_mobile/index.html)
 
 [apk01下载]( https://li932565422.github.io/lpc/QiChongGuan1.apk)
 
