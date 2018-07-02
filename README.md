@@ -1,5 +1,6 @@
 # lpc
 
+[网页AR]( https://li932565422.github.io/lpc/XiaoPingBa/index.html)
 
 [消屏吧]( https://li932565422.github.io/lpc/XiaoPingBa/index.html)
 
