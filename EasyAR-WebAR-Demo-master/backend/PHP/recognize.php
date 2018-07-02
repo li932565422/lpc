@@ -1,9 +1,9 @@
 <?php
 
 //云图库设置
-define('CLOUDKEY', '<65dce09a71c50c638e0cb3f386da8396>');
-define('CLOUDSECRET', '<hc5fF3rXRfAFJeAThKA1WQZ1PYIhZrl02A7YeQ6cB7x3hX4PEiO4B8mO2nzYWQntWPSltTJG5gL7y13QMAx3C6RJCtXFxsgm9kigQKJq6I7WkNYosOhYzVg1bohVqz8Y>');
-define('CLOUDURL', 'http://<b21934dca51e397a6b2f10702ef84820.cn1.crs.easyar.com:8080>/search');
+define('CLOUDKEY', '65dce09a71c50c638e0cb3f386da8396');
+define('CLOUDSECRET', 'hc5fF3rXRfAFJeAThKA1WQZ1PYIhZrl02A7YeQ6cB7x3hX4PEiO4B8mO2nzYWQntWPSltTJG5gL7y13QMAx3C6RJCtXFxsgm9kigQKJq6I7WkNYosOhYzVg1bohVqz8Y');
+define('CLOUDURL', 'http://b21934dca51e397a6b2f10702ef84820.cn1.crs.easyar.com:8080/search');
 
 header('Content-Type: application/javascript; charset=UTF-8');
 
