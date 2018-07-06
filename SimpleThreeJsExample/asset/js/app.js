@@ -1,4 +1,4 @@
-const webAR = new WebAR(1000, '/webar/Main.java');
+const webAR = new WebAR(1000, 'backend/Java/src/Main.java');
 
 const threeHelper = new ThreeHelper();
 
