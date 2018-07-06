@@ -1,6 +1,6 @@
 # lpc
 
-[网页AR]( https://li932565422.github.io/lpc/EasyAR-WebAR-Demo-master/html/SimpleThreeJsExample/index.html)
+[网页AR]( https://li932565422.github.io/lpc/SimpleThreeJsExample/index.html)
 
 [消屏吧]( https://li932565422.github.io/lpc/XiaoPingBa/index.html)
 
