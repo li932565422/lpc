@@ -1,4 +1,4 @@
-const webAR = new WebAR(1000, '/backend/PHP/recognize.php');
+const webAR = new WebAR(1000, 'backend/PHP/recognize.php');
 
 const threeHelper = new ThreeHelper();
 
@@ -25,6 +25,7 @@ document.querySelector('#openCamera').addEventListener('click', function(){
                     // 横屏
                     if (videoWidth < window.innerWidth) {
                         video.setAttribute('width', window.innerWidth.toString() +'px');
+                        alert("打开视频设备成功");
                     }
                 }
             })
@@ -64,6 +65,7 @@ document.querySelector('#start').addEventListener('click', () => {
         threeHelper.loadObject('asset/model/trex_v3.fbx');
 
         webAR.trace('加载模型');
+        console.log("1111111111111");
     });
 }, false);
 
