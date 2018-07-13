@@ -1,6 +1,10 @@
 # lpc
 
-[网页AR]( https://li932565422.github.io/lpc/AR.js_webAR/basic.html)
+[网页AR-鹦鹉壶]( https://li932565422.github.io/lpc/AR.js_webAR/YingWuHu.html)
+
+[网页AR-菩萨像]( https://li932565422.github.io/lpc/AR.js_webAR/PuSaXiang.html)
+
+[网页AR-阿卡丽]( https://li932565422.github.io/lpc/AR.js_webAR/AKL.html)
 
 [消屏吧]( https://li932565422.github.io/lpc/XiaoPingBa/index.html)
 
