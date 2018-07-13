@@ -2,7 +2,7 @@
 
 [网页AR-鹦鹉壶]( https://li932565422.github.io/lpc/AR.js_webAR/YingWuHu.html)
 
-[网页AR-菩萨像]( https://li932565422.github.io/lpc/AR.js_webAR/PuSaXiang.html)
+[网页AR-刻字瓶]( https://li932565422.github.io/lpc/AR.js_webAR/KeZiPing.html)
 
 [网页AR-阿卡丽]( https://li932565422.github.io/lpc/AR.js_webAR/AKL.html)
 
