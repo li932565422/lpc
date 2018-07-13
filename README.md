@@ -1,14 +1,12 @@
 # lpc
 
-[网页AR]( https://li932565422.github.io/lpc/SimpleThreeJsExample/index.html)
+[网页AR]( https://li932565422.github.io/lpc/AR.js_webAR/basic.html)
 
 [消屏吧]( https://li932565422.github.io/lpc/XiaoPingBa/index.html)
 
 [消屏吧手机版]( https://li932565422.github.io/lpc/XPB_mobile/index.html)
 
 [apk01下载]( https://li932565422.github.io/lpc/QiChongGuan1.apk)
-
-[微信小程序]( https://li932565422.github.io/lpc/web-mobile/index.html)
 
 
 [呵呵哒下载gg]( https://li932565422.github.io/lpc/Girl.apk)
