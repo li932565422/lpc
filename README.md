@@ -23,3 +23,7 @@
 
 [demo002]( https://li932565422.github.io/lpc/A-Frame/ShouJi.html)
 
+[拼图小游戏]( https://li932565422.github.io/lpc/PTYX/index.html)
+
+
+
