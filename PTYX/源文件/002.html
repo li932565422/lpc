@@ -4,6 +4,7 @@
 	<title>金辟邪</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<link href="css/bootstrap.css" rel="stylesheet">
 
 	<link href="css/common.css" rel="stylesheet">
 </head>
@@ -11,12 +12,13 @@
 <div class="game-bg">
 	<div class="pingtu-bg">
 		<div class="pingtu-content">
-			<img src=""  alt="Animals crossing" class="jqPuzzle jqp-r3-c3-SNABCDE" id="ptPicture"/>
+			<img src="Texture/金辟邪.jpg"  alt="Animals crossing" class="jqPuzzle jqp-r3-c3-SNABCDE">
 		</div>
 	</div>
 </div>
 
 <script type="text/javascript"  src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript"  src="js/bootstrap.js"></script>
 <script type="text/javascript"  src="js/jqp2.js"></script>
 <script type="text/javascript">
 	//   jqp[-LANGUAGE]-rROWS-cCOLS[-hHOLE][-sSHUFFLE_ROUNDS][-FLAGS]
@@ -27,23 +29,6 @@
 	  // o C: 隐藏 'Numbers' 按钮。
 	  // o D: 隐藏 'moves' 移动步数。
 	  // o E: 隐藏 'seconds' 游戏时间。
-	$(function(){
-		//根据不同浏览设备，加载不同图片
-		pic_html();
-		function pic_html(){
-			if($(window).width()>768){
-				$("#ptPicture").attr("src","Texture/金辟邪.jpg");
-			}else if($(window).width()>736){
-				$("#ptPicture").attr("src","Texture/small/金辟邪.jpg");
-			}else{
-				$("#ptPicture").attr("src","Texture/small/金辟邪1.jpg");
-			}
-		}
-		//当调整浏览器窗口的大小时，发生 resize 事件
-		$(window).resize(function(){
-			pic_html();
-		});
-	});
 </script>
 
 </body>
