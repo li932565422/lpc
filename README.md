@@ -1,6 +1,6 @@
 # lpc
 
-[网页AR-鹦鹉壶]( https://li932565422.github.io/lpc/AR.js_webAR/YingWuHu.html)
+[3D_压缩模型展示]( https://li932565422.github.io/lpc/example/webgl_loader_draco.html)
 
 [网页AR-刻字瓶]( https://li932565422.github.io/lpc/AR.js_webAR/KeZiPing.html)
 
