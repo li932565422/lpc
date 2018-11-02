@@ -14,7 +14,7 @@
 
 [刘海戏蟾图]( https://li932565422.github.io/lpc/刘海戏蟾图/index.html)
 
-[罗汉图动态]( https://li932565422.github.io/lpc/SP/index.html)
+[罗汉图动态]( https://li932565422.github.io/lpc/SP/test.html)
 
 
 
