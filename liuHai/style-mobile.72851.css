@@ -86,7 +86,7 @@ p.footer {
   background-size: 100%;
 }
 
-/* .progress-bar {
+.progress-bar {
     background-color: #1a1a1a;
     position: absolute;
     left: 25%;
@@ -115,7 +115,7 @@ p.footer {
                         transparent 75%, transparent);            
     
     animation: animate-stripes 1s linear infinite;             
-} */
+}
 
 @keyframes animate-stripes {
     0% {background-position: 0 0;} 100% {background-position: 60px 0;}
