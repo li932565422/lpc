@@ -12,8 +12,6 @@
 
 [apk01下载]( https://li932565422.github.io/lpc/QiChongGuan1.apk)
 
-[刘海戏蟾图]( https://li932565422.github.io/lpc/刘海戏蟾图/index.html)
-
 [罗汉图动态]( https://li932565422.github.io/lpc/SP/test.html)
 
 [刘海戏蟾图2.0]( https://li932565422.github.io/lpc/liuHai/index.html)
