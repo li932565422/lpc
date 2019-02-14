@@ -1,1 +1,0 @@
-var startUI=function(t){function a(){a.super(this)}return Laya.class(a,"startUI",t),a}(ui.startUI);
