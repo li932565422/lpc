@@ -1,1 +1,0 @@
-var LiuChengUI=function(n){function u(){u.super(this)}return Laya.class(u,"LiuchengUI",n),u}(ui.LiuChengUI);
