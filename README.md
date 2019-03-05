@@ -27,6 +27,8 @@
 
 [羊首灯apk下载]( https://li932565422.github.io/lpc/双烟管羊首纹灯.apk)
 
+[刘海PC_1.0]( https://li932565422.github.io/lpc/刘海PC/index.html)
+
 [Laya引擎测试]( https://li932565422.github.io/lpc/web/index.html)
 
 
