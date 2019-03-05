@@ -161,7 +161,7 @@ window.boot = function () {
     cc.game.run(option, onStart);
 };
 
-// main.ae78c.js is qqplay and jsb platform entry file, so we must leave platform init code here
+// main.a65db.js is qqplay and jsb platform entry file, so we must leave platform init code here
 if (false) {
     BK.Script.loadlib('GameRes://src/settings.js');
     BK.Script.loadlib();
@@ -185,7 +185,7 @@ if (false) {
     window.boot();
 }
 else if (window.jsb) {
-    require('src/settings.09e0b.js');
+    require('src/settings.7ce53.js');
     require('src/cocos2d-jsb.js');
     require('jsb-adapter/engine/index.js');
     window.boot();
