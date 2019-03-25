@@ -33,6 +33,12 @@
 
 [Laya引擎测试]( https://li932565422.github.io/lpc/web/index.html)
 
+<<<<<<< HEAD
+[360文物测试]( https://li932565422.github.io/lpc/清白玉荷叶式洗/HTML5Viewer.html)
+=======
+[360文物测试]( https://li932565422.github.io/lpc/清铜鎏金珐琅太平有象/HTML5Viewer.html)
+>>>>>>> 432301a7dd063b41bcff12fca978544b02603240
+
 
 
 
