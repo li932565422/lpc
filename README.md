@@ -33,6 +33,8 @@
 
 [Laya引擎测试]( https://li932565422.github.io/lpc/web/index.html)
 
+[360文物测试]( https://li932565422.github.io/lpc/清白玉荷叶式洗/HTML5Viewer.html)
+
 
 
 
