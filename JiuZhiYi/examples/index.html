@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>清乾隆彩漆九芝椅</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+
+		<!-- 文物细节样式-start-->
+		<link rel="stylesheet" href="dist/viewer.css">
+		<link rel="stylesheet" href="css/main.css">
+		<!-- 文物细节样式-end-->
+		<link rel="stylesheet" type="text/css" href="css/threeStyle.css">
+
+		<!-- 文物细节-start -->
+		<script src="assets/js/js/jquery-3.2.1.min.js"></script>
+		<script src="assets/js/js/bootstrap.js"></script>
+		<script src="dist/viewer.js"></script>
+		<script src="assets/js/js/main1.js"></script>
+		<!-- 文物细节-end -->
+		<!--模型插件-start-->
+		<script src="js/three.js"></script>
+		<script src="js/loaders/OBJLoader.js"></script>
+		<script src="js/controls/OrbitControls.js"></script>
+		<script src="js/RectAreaLightUniformsLib.js"></script>
+		<script src="js/libs/tween.min.js"></script>
+		<!--模型插件-end-->
+		<script src="divJs/divJs.js"></script>
+	</head>
+
+	<body>
+	<div class="swMoXing">
+		<div id="info">
+			<div class="buttonContainer">
+				<div  class="button" id="btnPosition1">
+					<img src="texture/sanweiwenwu.png" class="img-responsive"  onclick="instruct()">
+				</div>
+				<div  class="button" id="btnPosition2">
+					<img src="texture/wenzijiexi.png" class="img-responsive" onclick="analyze()">
+				</div>
+				<div  class="button" id="btnPosition3">
+					<img src="texture/erweizhanshi.png" class="img-responsive" onclick="details()">
+				</div>
+				<div  class="button" id="btnPosition4">
+					<img src="texture/jubumingcheng.png" class="img-responsive" onclick="move()">
+				</div>
+			</div>
+		</div>
+		<div class="swMxContent">
+			<div id="loadedDiv" class="loaded-div">
+				<img src="texture/loader.gif" class="img-responsive" />
+				<div id="jindu" class="jindu-div">
+				</div>
+			</div>
+			<!--文物解析-->
+			<div id="analyzeInfo" class="analyze-info">
+				<div class="analyzeImg">
+					<img class="img-responsive" src="texture/wenzijiexi1.jpg"  onclick="closeAnalyze()">
+				</div>
+			</div>
+			<!--//文物细节-start-->
+			<div id="detailsInfo" class="details-info">
+				<div class="detailsFlex">
+					<div class=" details-img">
+						<img src="texture/mingcheng.png" class="img-responsive ww-mingcheng">
+					</div>
+					<div class="docs-galley content-img">
+						<ul class="docs-pictures clearfix">
+							<li><img data-original="assets/img/emma-watson-1.jpg" src="assets/img/thumbnails/emma-watson-1.jpg"></li>
+							<li><img data-original="assets/img/emma-watson-2.jpg" src="assets/img/thumbnails/emma-watson-2.jpg"></li>
+							<li><img data-original="assets/img/emma-watson-3.jpg" src="assets/img/thumbnails/emma-watson-3.jpg"></li>
+							<li><img data-original="assets/img/emma-watson-4.jpg" src="assets/img/thumbnails/emma-watson-4.jpg"></li>
+							<li><img data-original="assets/img/emma-watson-5.jpg" src="assets/img/thumbnails/emma-watson-5.jpg"></li>
+							<li><img data-original="assets/img/emma-watson-6.jpg" src="assets/img/thumbnails/emma-watson-6.jpg"></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!--//文物细节-end-->
+		</div>
+	</div>
+	<script>
+
+			var container;
+			var camera, scene, renderer,controls;
+			var windowHalfX = window.innerWidth / 2;
+			var windowHalfY = window.innerHeight / 2;
+			var mesh;
+
+			var rectLight;
+            //高光贴图
+			var matPhongParams = {
+				specular: 0xFFFFFF,
+				shininess: 200
+			};
+			var matStdParams = {
+				roughness: 0.044676705160855, // calculated from shininess = 1000
+				metalness: 0.0
+			};
+			var matPhongFloor = new THREE.MeshPhongMaterial( matPhongParams );
+			var matStdFloor = new THREE.MeshStandardMaterial( matStdParams );
+
+
+			init();
+			animate();
+
+			function init() {
+				container1 = document.createElement( 'div' );
+				document.body.appendChild( container1 );
+				//renderer
+				renderer = new THREE.WebGLRenderer();
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.setClearColor(0x111111,1);
+//				renderer.autoClear = false;
+				container1.appendChild( renderer.domElement );
+
+				//camera
+				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
+				camera.position.z = 100;
+				controls = new THREE.OrbitControls( camera, renderer.domElement );
+//				controls.maxPolarAngle = Math.PI * 0.5;
+				controls.minDistance = 45;
+				controls.maxDistance = 100;
+				controls.rotateSpeed = 1.0;
+				controls.zoomSpeed = 2;
+
+				// scene
+				scene = new THREE.Scene();
+
+                scene.add(camera);
+
+				var light = new THREE.AmbientLight( 0xffffff);
+				scene.add( light );
+
+
+//				light = new THREE.DirectionalLight( 0xffffff,0.8 );
+				light = new THREE.DirectionalLight( 0xffffff,1.5 );
+				light.position.set( 0, 0, 1 );
+				camera.add( light );
+
+				// texture
+				var manager = new THREE.LoadingManager();
+				manager.onProgress = function ( item, loaded, total ) {
+//					console.log( item, loaded, total );
+				};
+				var texture = new THREE.Texture();
+				var onProgress = function ( xhr ) {
+					if ( xhr.lengthComputable ) {
+						var percentComplete = xhr.loaded / xhr.total * 100;
+//						console.log( Math.round(percentComplete, 2) + '% downloaded' );
+						document.getElementById('jindu').innerHTML = Math.round(percentComplete, 2) + '% ';
+						if(Math.round(percentComplete, 2) == 100){
+							document.getElementById('loadedDiv').style.display = "none";
+						}
+					}
+				};
+				var onError = function ( xhr ) {
+				};
+				var loader = new THREE.ImageLoader( manager );
+				loader.load( 'obj1/jiuzhiyi.jpg', function ( image ) {
+					texture.image = image;
+					texture.needsUpdate = true;
+				} );
+
+				// model
+				var loader = new THREE.OBJLoader( manager );
+				loader.load( 'obj1/jiuzhiyid.obj', function ( object ) {
+					object.traverse( function ( child ) {
+						if ( child instanceof THREE.Mesh ) {
+                            var m = child.material;
+							matStdFloor.lightMap = m.map;
+							matStdFloor.metalness = 0.0;
+							matStdFloor.roughness = 0.6;
+							child.material = matStdFloor;
+							child.material.map = texture;
+						}
+					} );
+
+                    mesh = object;
+					mesh.scale.set( 2, 2, 2 );
+					scene.add(mesh);
+
+				}, onProgress, onError );
+
+
+				window.addEventListener( 'resize', onWindowResize, false );
+			}
+
+			function onWindowResize() {
+				windowHalfX = window.innerWidth / 2;
+				windowHalfY = window.innerHeight / 2;
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+			}
+			//
+			function animate() {
+				requestAnimationFrame( animate );
+				render();
+
+				if(!buttonDetails){
+					controls.rotateSpeed = 0;
+					controls.zoomSpeed = 0;
+				}else{
+					controls.rotateSpeed = 1.0;
+					controls.zoomSpeed = 2;
+				}
+
+				controls.update();
+				TWEEN.update();
+			}
+			function render() {
+				camera.lookAt( scene.position );
+				renderer.render( scene, camera );
+			}
+
+//
+		</script>
+
+	</body>
+</html>
