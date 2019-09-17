@@ -1,0 +1,482 @@
+/*!
+ * Viewer v0.6.0
+ * https://github.com/fengyuanchen/viewer
+ *
+ * Copyright (c) 2014-2017 Fengyuan Chen
+ * Released under the MIT license
+ *
+ * Date: 2017-10-07T09:53:32.834Z
+ */
+
+.viewer-zoom-in::before,
+.viewer-zoom-out::before,
+.viewer-one-to-one::before,
+.viewer-reset::before,
+.viewer-prev::before,
+.viewer-play::before,
+.viewer-next::before,
+.viewer-rotate-left::before,
+.viewer-rotate-right::before,
+.viewer-flip-horizontal::before,
+.viewer-flip-vertical::before,
+.viewer-fullscreen::before,
+.viewer-fullscreen-exit::before,
+.viewer-close::before {
+  background: url("../assets/img/icons1.png");
+  background-repeat: no-repeat;
+  color: transparent;
+  display: block;
+  font-size: 0;
+  height: 50px;
+  width: 50px;
+}
+
+.viewer-zoom-in::before {
+  background-position:10px -2px;
+  content: 'Zoom In';
+}
+
+.viewer-zoom-out::before {
+  background-position: -43px -2px;
+  content: 'Zoom Out';
+}
+
+.viewer-one-to-one::before {
+  background-position: -93px -2px;
+  content: 'One to One';
+}
+
+.viewer-reset::before {
+  background-position: -146px -2px;
+  content: 'Reset';
+}
+
+.viewer-prev::before {
+  background-position: -198px -2px;
+  content: 'Previous';
+}
+
+.viewer-play::before {
+  background-position: -250px -4px;
+  content: 'Play';
+}
+
+.viewer-next::before {
+  background-position: -300px -2px;
+  content: 'Next';
+}
+
+.viewer-rotate-left::before {
+  background-position: -353px -2px;
+  content: 'Rotate Left';
+}
+
+.viewer-rotate-right::before {
+  background-position: -402px -2px;
+  content: 'Rotate Right';
+}
+
+.viewer-flip-horizontal::before {
+  background-position: -456px -2px;
+  content: 'Flip Horizontal';
+}
+
+.viewer-flip-vertical::before {
+  background-position: -507px -2px;
+  content: 'Flip Vertical';
+}
+
+.viewer-fullscreen::before {
+  background-position: -220px 0;
+  content: 'Enter Full Screen';
+}
+
+.viewer-fullscreen-exit::before {
+  background-position: -240px 0;
+  content: 'Exit Full Screen';
+}
+
+.viewer-close::before {
+  background-position: -662px -2px;
+  content: 'Close';
+}
+
+.viewer-container {
+  background-color: rgba(100, 100, 100, .5);
+  bottom: 0;
+  direction: ltr;
+  font-size: 0;
+  left: 0;
+  line-height: 0;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  -webkit-tap-highlight-color: transparent;
+  top: 0;
+  -webkit-touch-callout: none;
+  -ms-touch-action: none;
+  touch-action: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.viewer-container::-moz-selection,
+.viewer-container *::-moz-selection {
+  background-color: transparent;
+}
+
+.viewer-container::selection,
+.viewer-container *::selection {
+  background-color: transparent;
+}
+
+.viewer-container img {
+  display: block;
+  height: auto;
+  max-height: none !important;
+  max-width: none !important;
+  min-height: 0 !important;
+  min-width: 0 !important;
+  width: 100%;
+}
+
+.viewer-canvas {
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.viewer-canvas > img {
+  height: auto;
+  margin: 15px auto;
+  max-width: 90% !important;
+  width: auto;
+}
+
+.viewer-footer {
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  text-align: center;
+}
+
+.viewer-navbar {
+  background-color: rgba(0, 0, 0, .5);
+  overflow: hidden;
+}
+
+.viewer-list {
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 100px;
+  margin: 0;
+  overflow: hidden;
+  padding: 1px 0;
+}
+
+.viewer-list > li {
+  color: transparent;
+  cursor: pointer;
+  float: left;
+  font-size: 0;
+  height: 100px;
+  line-height: 0;
+  opacity: .5;
+  overflow: hidden;
+  width: 60px;
+}
+
+.viewer-list > li + li {
+  margin-left: 1px;
+}
+
+.viewer-list > .viewer-active {
+  opacity: 1;
+}
+
+.viewer-player {
+  background-color: #000;
+  bottom: 0;
+  cursor: none;
+  display: none;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.viewer-player > img {
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+.viewer-toolbar {
+  margin: 0 auto 5px;
+  overflow: hidden;
+  padding: 3px 0;
+  width: 650px;
+}
+
+.viewer-toolbar > li {
+  background-color: rgba(0, 0, 0, .5);
+  border-radius: 50%;
+  cursor: pointer;
+  float: left;
+  height: 50px;
+  overflow: hidden;
+  width: 50px;
+}
+
+.viewer-toolbar > li:hover {
+  background-color: rgba(0, 0, 0, .8);
+}
+
+.viewer-toolbar > li::before {
+  margin: 2px;
+}
+
+.viewer-toolbar > li + li {
+  margin-left: 1px;
+}
+
+.viewer-toolbar > .viewer-play {
+  height: 50px;
+  margin-bottom: 0;
+  margin-top: 0;
+  width: 50px;
+}
+
+.viewer-toolbar > .viewer-play::before {
+  margin: 5px;
+}
+
+.viewer-tooltip {
+  background-color: rgba(0, 0, 0, .8);
+  border-radius: 10px;
+  color: #fff;
+  display: none;
+  font-size: 12px;
+  height: 20px;
+  left: 50%;
+  line-height: 20px;
+  margin-left: -25px;
+  margin-top: -10px;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  width: 50px;
+}
+
+.viewer-title {
+  color: #ccc;
+  display: inline-block;
+  font-size: 12px;
+  line-height: 1;
+  margin: 0 5% 5px;
+  max-width: 90%;
+  opacity: .8;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.viewer-title:hover {
+  opacity: 1;
+}
+
+.viewer-button {
+  background-color: rgba(0, 0, 0, .5);
+  border-radius: 50%;
+  cursor: pointer;
+  height: 80px;
+  overflow: hidden;
+  position: absolute;
+  right: -40px;
+  top: -40px;
+  width: 80px;
+}
+
+.viewer-button::before {
+  bottom: 15px;
+  left: 15px;
+  position: absolute;
+}
+
+.viewer-fixed {
+  position: fixed;
+}
+
+.viewer-open {
+  overflow: hidden;
+}
+
+.viewer-show {
+  display: block;
+}
+
+.viewer-hide {
+  display: none;
+}
+
+.viewer-invisible {
+  visibility: hidden;
+}
+
+.viewer-move {
+  cursor: move;
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+.viewer-fade {
+  opacity: 0;
+}
+
+.viewer-in {
+  opacity: 1;
+}
+
+.viewer-transition {
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+@media (max-width: 767px) {
+  .viewer-hide-xs-down {
+    display: none;
+  }
+}
+
+@media (max-width: 991px) {
+  .viewer-hide-sm-down {
+    display: none;
+  }
+}
+
+@media (max-width: 1199px) {
+  .viewer-hide-md-down {
+    display: none;
+  }
+}
+@media screen and (max-width: 414px){
+  .viewer-zoom-in::before,
+  .viewer-zoom-out::before,
+  .viewer-one-to-one::before,
+  .viewer-reset::before,
+  .viewer-prev::before,
+  .viewer-play::before,
+  .viewer-next::before,
+  .viewer-rotate-left::before,
+  .viewer-rotate-right::before,
+  .viewer-flip-horizontal::before,
+  .viewer-flip-vertical::before,
+  .viewer-fullscreen::before,
+  .viewer-fullscreen-exit::before,
+  .viewer-close::before {
+    background: url("../assets/img/icons.png");
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 32px;
+  }
+  .viewer-zoom-in::before {
+    background-position:4px -1px;
+    content: 'Zoom In';
+  }
+
+  .viewer-zoom-out::before {
+    background-position: -29px -1px;
+    content: 'Zoom Out';
+  }
+
+  .viewer-one-to-one::before {
+    background-position: -62px -1px;
+    content: 'One to One';
+  }
+
+  .viewer-reset::before {
+    background-position: -95px -1px;
+    content: 'Reset';
+  }
+
+  .viewer-prev::before {
+    background-position: -128px -1px;
+    content: 'Previous';
+  }
+
+  .viewer-play::before {
+    background-position: -162px -4px;
+    content: 'Play';
+  }
+
+  .viewer-next::before {
+    background-position: -195px -1px;
+    content: 'Next';
+  }
+
+  .viewer-rotate-left::before {
+    background-position: -228px -1px;
+    content: 'Rotate Left';
+  }
+
+  .viewer-rotate-right::before {
+    background-position: -261px -1px;
+    content: 'Rotate Right';
+  }
+
+  .viewer-flip-horizontal::before {
+    background-position: -293px -1px;
+    content: 'Flip Horizontal';
+  }
+
+  .viewer-flip-vertical::before {
+    background-position: -326px -1px;
+    content: 'Flip Vertical';
+  }
+
+  .viewer-fullscreen::before {
+    background-position: -220px 0;
+    content: 'Enter Full Screen';
+  }
+
+  .viewer-fullscreen-exit::before {
+    background-position: -240px 0;
+    content: 'Exit Full Screen';
+  }
+
+  .viewer-close::before {
+    background-position: -425px -1px;
+    content: 'Close';
+  }
+
+  .viewer-container {
+    background-color: rgba(0, 0, 0, 1);
+  }
+
+  .viewer-toolbar > .viewer-play {
+    height: 32px;
+    margin-bottom: 0;
+    margin-top: 0;
+    width: 32px;
+  }
+
+  .viewer-toolbar {
+    margin: 0 auto 5px;
+    overflow: hidden;
+    padding: 3px 0;
+    width: 400px;
+  }
+
+  .viewer-toolbar > li {
+    background-color: rgba(100, 100, 100, .5);
+    height: 32px;
+    width: 32px;
+  }
+}
