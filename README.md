@@ -35,6 +35,8 @@
 
 [360文物测试]( https://li932565422.github.io/lpc/3/HTML5Viewer.html)
 
+[佛像测试]( https://li932565422.github.io/lpc/佛像test/examples/index.html)
+
 
 
 
