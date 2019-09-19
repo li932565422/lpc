@@ -40,7 +40,7 @@
 
 [佛像测试02]( https://li932565422.github.io/lpc/佛像test02/examples/index.html)
 
-[八猴渲染器test01]( https://li932565422.github.io/lpc/佛像test02/examples/index.html)
+[八猴渲染器test01]( https://li932565422.github.io/lpc/八猴test/scene.html)
 
 
 
