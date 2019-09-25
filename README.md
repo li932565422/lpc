@@ -42,6 +42,8 @@
 
 [八猴渲染器test01]( https://li932565422.github.io/lpc/八猴test/scene.html)
 
+[佛头测试02]( https://li932565422.github.io/lpc/FoTou/index.html)
+
 
 
 
