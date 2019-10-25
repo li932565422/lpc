@@ -47,6 +47,8 @@
 
 [佛头修复unity]( https://li932565422.github.io/lpc/WebglFoTou/index.html)
 
+[AR十五连盏灯]( https://li932565422.github.io/lpc/Tets_webAR/ShiWuLianZhanDeng.html)
+
 
 
 
