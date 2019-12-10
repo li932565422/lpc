@@ -72,8 +72,8 @@ THREE.OrbitControls = function ( object, domElement ) {
 	// The four arrow keys
 	this.keys = { LEFT: 37, UP: 38, RIGHT: 39, BOTTOM: 40 };
 
-	// Mouse buttons
-	this.mouseButtons = { ORBIT: THREE.MOUSE.LEFT, ZOOM: THREE.MOUSE.MIDDLE, PAN: THREE.MOUSE.RIGHT };
+	// Mouse buttons  .RIGHT
+	this.mouseButtons = { ORBIT: THREE.MOUSE.LEFT, ZOOM: THREE.MOUSE.WHEEL, PAN: THREE.MOUSE.MIDDLE };
 
 	// for reset
 	this.target0 = this.target.clone();
@@ -681,15 +681,15 @@ THREE.OrbitControls = function ( object, domElement ) {
 			state = STATE.ROTATE;
 
 		} 
-		// else if ( event.button === scope.mouseButtons.ZOOM ) {
+		else if ( event.button === scope.mouseButtons.ZOOM ) {
 
-		// 	if ( scope.enableZoom === false ) return;
+			if ( scope.enableZoom === false ) return;
 
-		// 	handleMouseDownDolly( event );
+			handleMouseDownDolly( event );
 
-		// 	state = STATE.DOLLY;
+			state = STATE.DOLLY;
 
-		// } 
+		} 
 		else if ( event.button === scope.mouseButtons.PAN ) {
 
 			if ( scope.enablePan === false ) return;
@@ -724,13 +724,13 @@ THREE.OrbitControls = function ( object, domElement ) {
 			handleMouseMoveRotate( event );
 
 		}
-		//  else if ( state === STATE.DOLLY ) {
+		 else if ( state === STATE.DOLLY ) {
 
-		// 	if ( scope.enableZoom === false ) return;
+			if ( scope.enableZoom === false ) return;
 
-		// 	handleMouseMoveDolly( event );
+			handleMouseMoveDolly( event );
 
-		// } 
+		} 
 		else if ( state === STATE.PAN ) {
 
 			if ( scope.enablePan === false ) return;
@@ -796,23 +796,44 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 			case 2:	// two-fingered touch: dolly
 
-				if ( scope.enableZoom === false ) return;
+				var dx = event.touches[ 0 ].pageX - event.touches[ 1 ].pageX;
+				var dy = event.touches[ 0 ].pageY - event.touches[ 1 ].pageY;
 
-				handleTouchStartDolly( event );
+				var distance = Math.sqrt( dx * dx + dy * dy );
 
-				state = STATE.TOUCH_DOLLY;
+				dollyEnd.set( 0, distance );
 
+				dollyDelta.subVectors( dollyEnd, dollyStart );
+
+				if ( dollyDelta.y > 0 ) {
+
+					if ( scope.enableZoom === false ) return;
+
+					handleTouchStartDolly( event );
+
+					state = STATE.TOUCH_DOLLY;
+
+				} else if ( dollyDelta.y < 0 ) {
+
+					if ( scope.enablePan === false ) return;
+
+					handleTouchStartPan( event );
+
+					state = STATE.TOUCH_PAN;
+
+				}
+			
 				break;
 
-			case 3: // three-fingered touch: pan
+			// case 3: // three-fingered touch: pan
 
-				if ( scope.enablePan === false ) return;
+			// 	if ( scope.enablePan === false ) return;
 
-				handleTouchStartPan( event );
+			// 	handleTouchStartPan( event );
 
-				state = STATE.TOUCH_PAN;
+			// 	state = STATE.TOUCH_PAN;
 
-				break;
+			// 	break;
 
 			default:
 
