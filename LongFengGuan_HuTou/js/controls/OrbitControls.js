@@ -805,7 +805,7 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 				dollyDelta.subVectors( dollyEnd, dollyStart );
 
-				if ( dollyDelta.y = 0 ) {
+				if ( dollyDelta.y >-0.5 && dollyDelta.y <0.5 ) {
 					
 					if ( scope.enablePan === false ) return;
 
