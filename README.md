@@ -45,7 +45,7 @@
 [佛头测试02]( https://li932565422.github.io/lpc/FoTou/index.html)
 
 
-[虎头罐]( https://li932565422.github.io/lpc/LongFengGuan_HuTou/index.html)
+[鸟腿]( https://li932565422.github.io/lpc/JinDaiSanCaiLengJiaJiShi/index.html)
 
 [佛test]( https://li932565422.github.io/lpc/fo/scene.html)
 
