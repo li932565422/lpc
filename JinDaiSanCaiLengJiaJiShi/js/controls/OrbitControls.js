@@ -804,9 +804,9 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 			    let yLen = Math.abs(point2.pageY - point1.pageY);
 
-			    this.touchDistance = this._getDistance(xLen, yLen);
+			    let touchDistance = Math.sqrt(xLen * xLen + yLen * yLen);
 
-			    if (touchDistance/this.touchDistance!=1) {
+			    if (touchDistance1/touchDistance!=1) {
 			    	
 			    	if ( scope.enablePan === false ) return;
 
@@ -868,6 +868,12 @@ THREE.OrbitControls = function ( object, domElement ) {
 				break;
 
 			case 2: // two-fingered touch: dolly
+
+				let xLen = Math.abs(e.touches[0].pageX - e.touches[1].pageX);
+
+     			let yLen = Math.abs(e.touches[1].pageY - e.touches[1].pageY);
+
+      			let touchDistance1 = Math.sqrt(xLen * xLen + yLen * yLen);
 
 				if ( scope.enableZoom === false ) return;
 				if ( state !== STATE.TOUCH_DOLLY ) return; // is this needed?...
