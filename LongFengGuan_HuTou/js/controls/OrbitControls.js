@@ -815,12 +815,20 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 				} else if ( dollyDelta.y < 0 ) {
 
+
+					if ( scope.enableZoom === false ) return;
+
+					handleTouchStartDolly( event );
+
+					state = STATE.TOUCH_DOLLY;
+
+				}else{
+
 					if ( scope.enablePan === false ) return;
 
 					handleTouchStartPan( event );
 
 					state = STATE.TOUCH_PAN;
-
 				}
 			
 				break;
@@ -872,18 +880,46 @@ THREE.OrbitControls = function ( object, domElement ) {
 				if ( scope.enableZoom === false ) return;
 				if ( state !== STATE.TOUCH_DOLLY ) return; // is this needed?...
 
-				handleTouchMoveDolly( event );
+				
+				var dx = event.touches[ 0 ].pageX - event.touches[ 1 ].pageX;
+				var dy = event.touches[ 0 ].pageY - event.touches[ 1 ].pageY;
+
+				var distance = Math.sqrt( dx * dx + dy * dy );
+
+				dollyEnd.set( 0, distance );
+
+				dollyDelta.subVectors( dollyEnd, dollyStart );
+
+				if ( dollyDelta.y > 0 ) {
+
+					if ( scope.enableZoom === false ) return;
+
+					handleTouchMoveDolly( event );
+
+				} else if ( dollyDelta.y < 0 ) {
+
+
+					if ( scope.enableZoom === false ) return;
+
+					handleTouchMoveDolly( event );
+
+				}else{
+					
+					if ( scope.enablePan === false ) return;
+
+					handleTouchMovePan( event );
+				}
 
 				break;
 
-			case 3: // three-fingered touch: pan
+			// case 3: // three-fingered touch: pan
 
-				if ( scope.enablePan === false ) return;
-				if ( state !== STATE.TOUCH_PAN ) return; // is this needed?...
+			// 	if ( scope.enablePan === false ) return;
+			// 	if ( state !== STATE.TOUCH_PAN ) return; // is this needed?...
 
-				handleTouchMovePan( event );
+			// 	handleTouchMovePan( event );
 
-				break;
+			// 	break;
 
 			default:
 
