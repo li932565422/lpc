@@ -724,13 +724,13 @@ THREE.OrbitControls = function ( object, domElement ) {
 			handleMouseMoveRotate( event );
 
 		}
-		//  else if ( state === STATE.DOLLY ) {
+		 else if ( state === STATE.DOLLY ) {
 
-		// 	if ( scope.enableZoom === false ) return;
+			if ( scope.enableZoom === false ) return;
 
-		// 	handleMouseMoveDolly( event );
+			handleMouseMoveDolly( event );
 
-		// } 
+		} 
 		else if ( state === STATE.PAN ) {
 
 			if ( scope.enablePan === false ) return;
@@ -795,36 +795,36 @@ THREE.OrbitControls = function ( object, domElement ) {
 				break;
 
 			case 2:	// two-fingered touch: dolly
-				
-				let point1 = e.touches[0];
 
-			    let point2 = e.touches[1];
+				var dx = event.touches[ 0 ].pageX - event.touches[ 1 ].pageX;
+				var dy = event.touches[ 0 ].pageY - event.touches[ 1 ].pageY;
 
-			    let xLen = Math.abs(point2.pageX - point1.pageX);
+				var distance = Math.sqrt( dx * dx + dy * dy );
 
-			    let yLen = Math.abs(point2.pageY - point1.pageY);
+				dollyEnd.set( 0, distance );
 
-			    let touchDistance = Math.sqrt(xLen * xLen + yLen * yLen);
+				dollyDelta.subVectors( dollyEnd, dollyStart );
 
-			    if (touchDistance1/touchDistance!=1) {
-			    	
-			    	if ( scope.enablePan === false ) return;
+				if ( dollyDelta.y = 0 ) {
+					
+					if ( scope.enablePan === false ) return;
 
 					handleTouchStartPan( event );
 
 					state = STATE.TOUCH_PAN;
 
-			    }else{
-			    	
+				}else{
+
 					if ( scope.enableZoom === false ) return;
 
 					handleTouchStartDolly( event );
 
 					state = STATE.TOUCH_DOLLY;
+				}
 
-			    }
 				
-			    	break;
+				break;
+
 			// case 3: // three-fingered touch: pan
 
 			// 	if ( scope.enablePan === false ) return;
@@ -868,12 +868,6 @@ THREE.OrbitControls = function ( object, domElement ) {
 				break;
 
 			case 2: // two-fingered touch: dolly
-
-				let xLen = Math.abs(e.touches[0].pageX - e.touches[1].pageX);
-
-     			let yLen = Math.abs(e.touches[1].pageY - e.touches[1].pageY);
-
-      			let touchDistance1 = Math.sqrt(xLen * xLen + yLen * yLen);
 
 				if ( scope.enableZoom === false ) return;
 				if ( state !== STATE.TOUCH_DOLLY ) return; // is this needed?...
