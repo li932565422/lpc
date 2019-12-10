@@ -805,7 +805,7 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 				dollyDelta.subVectors( dollyEnd, dollyStart );
 
-				if ( dollyDelta.y > 0 ) {
+				if ( dollyDelta.y > 0.1 ||dollyDelta.y < -0.1 ) {
 
 					if ( scope.enableZoom === false ) return;
 
@@ -813,16 +813,7 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 					state = STATE.TOUCH_DOLLY;
 
-				} else if ( dollyDelta.y < 0 ) {
-
-
-					if ( scope.enableZoom === false ) return;
-
-					handleTouchStartDolly( event );
-
-					state = STATE.TOUCH_DOLLY;
-
-				}else{
+				} else{
 
 					if ( scope.enablePan === false ) return;
 
@@ -890,20 +881,13 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 				dollyDelta.subVectors( dollyEnd, dollyStart );
 
-				if ( dollyDelta.y > 0 ) {
+				if ( dollyDelta.y > 0.1||dollyDelta.y < -0.1 ) {
 
 					if ( scope.enableZoom === false ) return;
 
 					handleTouchMoveDolly( event );
 
-				} else if ( dollyDelta.y < 0 ) {
-
-
-					if ( scope.enableZoom === false ) return;
-
-					handleTouchMoveDolly( event );
-
-				}else{
+				} else{
 					
 					if ( scope.enablePan === false ) return;
 
