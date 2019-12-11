@@ -868,9 +868,7 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 			case 2: // two-fingered touch: dolly
 
-				if ( scope.enableZoom === false ) return;
-				if ( state !== STATE.TOUCH_DOLLY ) return; // is this needed?...
-
+				// is this needed?...
 				
 				var dx = event.touches[ 0 ].pageX - event.touches[ 1 ].pageX;
 				var dy = event.touches[ 0 ].pageY - event.touches[ 1 ].pageY;
@@ -884,12 +882,14 @@ THREE.OrbitControls = function ( object, domElement ) {
 				if ( dollyDelta.y > 0.1||dollyDelta.y < -0.1 ) {
 
 					if ( scope.enableZoom === false ) return;
+					if ( state !== STATE.TOUCH_DOLLY ) return; 
 
 					handleTouchMoveDolly( event );
 
 				} else{
 					
 					if ( scope.enablePan === false ) return;
+					if ( state !== STATE.TOUCH_PAN ) return;
 
 					handleTouchMovePan( event );
 				}
