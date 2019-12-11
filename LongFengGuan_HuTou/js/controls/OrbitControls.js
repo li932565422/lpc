@@ -812,17 +812,11 @@ THREE.OrbitControls = function ( object, domElement ) {
 					handleTouchStartPan( event );
 
 					state = STATE.TOUCH_PAN;
-			}else{
-					state=STATE.NONE;
-				}
+			}
 
-		}
+		
 
-		if ( state !== STATE.NONE ) {
-
-			scope.dispatchEvent( startEvent );
-
-		}
+		
 
 	}
 
@@ -859,9 +853,7 @@ THREE.OrbitControls = function ( object, domElement ) {
 					if ( state !== STATE.TOUCH_PAN ) return;
 
 					handleTouchMovePan( event );
-			}else{
-					state=STATE.NONE;
-				}
+			}
 
 	}
 
