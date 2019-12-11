@@ -71,7 +71,26 @@
 <script src="js/ww.js"></script>
 
 	<script>
+			
+			document.addEventListener('dblclick', function(){
+   			
+   				controls.target = new THREE.Vector3(0, 0, 0);
+			});
 
+			var touchTime = Date.now();
+			function handleClick(){
+			    if( Date.now() - touchTime < 800 ){
+			       controls.target = new THREE.Vector3(0, 0, 0);
+			    }else{
+			        //如果第二次点击在第一次点击0.8秒后，
+			        //则第二次点击默认为下一次双击判断的第一次点击
+			        touchTime = Date.now();
+			    }
+			}
+			document.addEventListener('click', handleClick);
+
+		
+		
 			var container;
 			var camera, scene, renderer,controls;
 			var windowHalfX = window.innerWidth / 2;
