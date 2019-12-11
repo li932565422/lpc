@@ -47,7 +47,7 @@ THREE.OrbitControls = function ( object, domElement ) {
 	// If damping is enabled, you must call controls.update() in your animation loop
 	this.enableDamping = false;
 	this.dampingFactor = 0.25;
-	this.dampingFactorZoom =0.1;
+	this.dampingFactorZoom=0.1;
 
 	// This option actually enables dollying in and out; left as "zoom" for backwards compatibility.
 	// Set to false to disable zooming
@@ -165,7 +165,7 @@ THREE.OrbitControls = function ( object, domElement ) {
 
  
 
-				rDelta *= ( 1 - this.dampingFactorZoom );
+				rDelta *= ( 1 - this.dampingFactor );
 
 				 
 
@@ -780,6 +780,23 @@ THREE.OrbitControls = function ( object, domElement ) {
 	}
 
 	function onTouchStart( event ) {
+
+		if ( scope.enabled === false ) return;
+
+		switch ( event.touches.length ) {
+
+			case 1:	// one-fingered touch: rotate
+
+				if ( scope.enableRotate === false ) return;
+
+				handleTouchStartRotate( event );
+
+				state = STATE.TOUCH_ROTATE;
+
+				break;
+
+			case 2:	// two-fingered touch: dolly
+
 				var dx = event.touches[ 0 ].pageX - event.touches[ 1 ].pageX;
 				var dy = event.touches[ 0 ].pageY - event.touches[ 1 ].pageY;
 
@@ -788,35 +805,47 @@ THREE.OrbitControls = function ( object, domElement ) {
 				dollyEnd.set( 0, distance );
 
 				dollyDelta.subVectors( dollyEnd, dollyStart );
-				console.log(dollyDelta.y);
-		
-		if ( scope.enabled === false ) return;
 
-		if (event.touches.length==1) {
-			if ( scope.enableRotate === false ) return;
-
-				handleTouchStartRotate( event );
-
-				state = STATE.TOUCH_ROTATE;
-			}else if ( dollyDelta.y > 0.1 ||dollyDelta.y < -0.1 ) {
+				if ( dollyDelta.y > 0.1 ||dollyDelta.y < -0.1 ) {
 
 					if ( scope.enableZoom === false ) return;
 
 					handleTouchStartDolly( event );
 
 					state = STATE.TOUCH_DOLLY;
-			}else if( dollyDelta.y < 0.1 ||dollyDelta.y > -0.1 ){
+
+				} else{
 
 					if ( scope.enablePan === false ) return;
 
 					handleTouchStartPan( event );
 
 					state = STATE.TOUCH_PAN;
-			}
+				}
+			
+				break;
 
-		
+			// case 3: // three-fingered touch: pan
 
-		
+			// 	if ( scope.enablePan === false ) return;
+
+			// 	handleTouchStartPan( event );
+
+			// 	state = STATE.TOUCH_PAN;
+
+			// 	break;
+
+			default:
+
+				state = STATE.NONE;
+
+		}
+
+		if ( state !== STATE.NONE ) {
+
+			scope.dispatchEvent( startEvent );
+
+		}
 
 	}
 
@@ -827,6 +856,21 @@ THREE.OrbitControls = function ( object, domElement ) {
 		event.preventDefault();
 		event.stopPropagation();
 
+		switch ( event.touches.length ) {
+
+			case 1: // one-fingered touch: rotate
+
+				if ( scope.enableRotate === false ) return;
+				if ( state !== STATE.TOUCH_ROTATE ) return; // is this needed?...
+
+				handleTouchMoveRotate( event );
+
+				break;
+
+			case 2: // two-fingered touch: dolly
+
+				// is this needed?...
+				
 				var dx = event.touches[ 0 ].pageX - event.touches[ 1 ].pageX;
 				var dy = event.touches[ 0 ].pageY - event.touches[ 1 ].pageY;
 
@@ -836,24 +880,37 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 				dollyDelta.subVectors( dollyEnd, dollyStart );
 
-		if (event.touches.length==1) {
-			if ( scope.enableRotate === false ) return;
-				if ( state !== STATE.TOUCH_ROTATE ) return; // is this needed?...
-
-				handleTouchMoveRotate( event );
-			}else if ( dollyDelta.y > 0.1 ||dollyDelta.y < -0.1 ) {
+				if ( dollyDelta.y > 0.1||dollyDelta.y < -0.1 ) {
 
 					if ( scope.enableZoom === false ) return;
-					if ( state !== STATE.TOUCH_DOLLY ) return; 
+					// if ( state !== STATE.TOUCH_DOLLY ) return; 
 
 					handleTouchMoveDolly( event );
-			}else if( dollyDelta.y < 0.1 ||dollyDelta.y > -0.1 ){
 
+				} else{
+					
 					if ( scope.enablePan === false ) return;
-					if ( state !== STATE.TOUCH_PAN ) return;
+					// if ( state !== STATE.TOUCH_PAN ) return;
 
 					handleTouchMovePan( event );
-			}
+				}
+
+				break;
+
+			// case 3: // three-fingered touch: pan
+
+			// 	if ( scope.enablePan === false ) return;
+			// 	if ( state !== STATE.TOUCH_PAN ) return; // is this needed?...
+
+			// 	handleTouchMovePan( event );
+
+			// 	break;
+
+			default:
+
+				state = STATE.NONE;
+
+		}
 
 	}
 
