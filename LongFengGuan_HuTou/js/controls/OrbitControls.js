@@ -648,6 +648,12 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 		scope.update();
 
+		SZEnd1.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
+				SZEnd2.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
+				XiangLiang1.subVectors( SZEnd1, SZStart1 );
+				XiangLiang2.subVectors( SZEnd2, SZStart2 );
+
+
 
 	}
 
@@ -808,13 +814,7 @@ THREE.OrbitControls = function ( object, domElement ) {
 			case 2:	// two-fingered touch: dolly
 
 
-
-				SZEnd1.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
-				SZEnd2.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
-				XiangLiang1.subVectors( SZEnd1, SZStart1 );
-				XiangLiang2.subVectors( SZEnd2, SZStart2 );
-
-				if ((XiangLiang1.y>0&&XiangLiang2.y<0)||(XiangLiang1.y<0&&XiangLiang2.y>0)) {
+				if (XiangLiang1/XiangLiang2<0) {
 
 					if ( scope.enableZoom === false ) return;
 
@@ -881,12 +881,8 @@ THREE.OrbitControls = function ( object, domElement ) {
 			case 2: // two-fingered touch: dolly
 
 
-				SZEnd1.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
-				SZEnd2.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
-				XiangLiang1.subVectors( SZEnd1, SZStart1 );
-				XiangLiang2.subVectors( SZEnd2, SZStart2 );
-
-				if ((XiangLiang1.y>0&&XiangLiang2.y<0)||(XiangLiang1.y<0&&XiangLiang2.y>0)) {
+				
+				if (XiangLiang1/XiangLiang2<0) {
 
 					if ( scope.enableZoom === false ) return;
 					if ( state !== STATE.TOUCH_DOLLY ) return; // is this needed?...
