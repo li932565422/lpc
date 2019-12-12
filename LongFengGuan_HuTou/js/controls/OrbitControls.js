@@ -647,6 +647,11 @@ THREE.OrbitControls = function ( object, domElement ) {
 		dollyStart.copy( dollyEnd );
 
 		scope.update();
+		
+		SZEnd1.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
+				SZEnd2.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
+				XiangLiang1.subVectors( SZEnd1, SZStart1 );
+				XiangLiang2.subVectors( SZEnd2, SZStart2 );
 
 
 	}
@@ -806,13 +811,6 @@ THREE.OrbitControls = function ( object, domElement ) {
 				break;
 
 			case 2:	// two-fingered touch: dolly
-
-
-
-				SZEnd1.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
-				SZEnd2.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
-				XiangLiang1.subVectors( SZEnd1, SZStart1 );
-				XiangLiang2.subVectors( SZEnd2, SZStart2 );
 
 				if ((XiangLiang1.y>0&&XiangLiang2.y<0)||(XiangLiang1.y<0&&XiangLiang2.y>0)) {
 
