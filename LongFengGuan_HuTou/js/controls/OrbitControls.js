@@ -279,6 +279,12 @@ THREE.OrbitControls = function ( object, domElement ) {
 	var dollyStart = new THREE.Vector2();
 	var dollyEnd = new THREE.Vector2();
 	var dollyDelta = new THREE.Vector2();
+	var SZStart1 = new THREE.Vector2();
+	var SZStart2 =new THREE.Vector2();
+	var SZEnd1 = new THREE.Vector2();
+	var SZEnd2 =new THREE.Vector2();
+	var XiangLiang1 = new THREE.Vector2();
+	var XiangLiang2 =new THREE.Vector2();
 
 	function getAutoRotationAngle() {
 
@@ -581,6 +587,9 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 		dollyStart.set( 0, distance );
 
+		SZStart1.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY);
+		SZStart2.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY);
+
 	}
 
 	function handleTouchStartPan( event ) {
@@ -638,6 +647,7 @@ THREE.OrbitControls = function ( object, domElement ) {
 		dollyStart.copy( dollyEnd );
 
 		scope.update();
+
 
 	}
 
@@ -797,31 +807,33 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 			case 2:	// two-fingered touch: dolly
 
-				var dx = event.touches[ 0 ].pageX - event.touches[ 1 ].pageX;
-				var dy = event.touches[ 0 ].pageY - event.touches[ 1 ].pageY;
 
-				var distance = Math.sqrt( dx * dx + dy * dy );
 
-				dollyEnd.set( 0, distance );
+				SZEnd1.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
+				SZEnd2.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
+				XiangLiang1.subVectors( SZEnd1, SZStart1 );
+				XiangLiang2.subVectors( SZEnd2, SZStart2 );
 
-				dollyDelta.subVectors( dollyEnd, dollyStart );
-
-				if ( dollyDelta.y > 0.5 ||dollyDelta.y < -0.5 ) {
+				if ((XiangLiang1.y>0&&XiangLiang2.y<0)||(XiangLiang1.y<0&&XiangLiang2.y>0)) {
 
 					if ( scope.enableZoom === false ) return;
 
 					handleTouchStartDolly( event );
 
-					state = STATE.TOUCH_DOLLY;
+					state = STATE.TOUCH_DOLLY;	
+				}else{
 
-				} else if ( dollyDelta.y < 0.1 ||dollyDelta.y > -0.1 ) {
 					if ( scope.enablePan === false ) return;
 
 					handleTouchStartPan( event );
 
 					state = STATE.TOUCH_PAN;
+
 				}
-			
+
+
+				
+
 				break;
 
 			// case 3: // three-fingered touch: pan
@@ -868,32 +880,29 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 			case 2: // two-fingered touch: dolly
 
-				// is this needed?...
-				
-				var dx = event.touches[ 0 ].pageX - event.touches[ 1 ].pageX;
-				var dy = event.touches[ 0 ].pageY - event.touches[ 1 ].pageY;
 
-				var distance = Math.sqrt( dx * dx + dy * dy );
+				SZEnd1.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
+				SZEnd2.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
+				XiangLiang1.subVectors( SZEnd1, SZStart1 );
+				XiangLiang2.subVectors( SZEnd2, SZStart2 );
 
-				dollyEnd.set( 0, distance );
-
-				dollyDelta.subVectors( dollyEnd, dollyStart );
-
-				if ( dollyDelta.y > 0.5||dollyDelta.y < -0.5 ) {
+				if ((XiangLiang1.y>0&&XiangLiang2.y<0)||(XiangLiang1.y<0&&XiangLiang2.y>0)) {
 
 					if ( scope.enableZoom === false ) return;
-					// if ( state !== STATE.TOUCH_DOLLY ) return; 
+					if ( state !== STATE.TOUCH_DOLLY ) return; // is this needed?...
 
 					handleTouchMoveDolly( event );
 
-				} else if ( dollyDelta.y < 0.1||dollyDelta.y > -0.1 ){
-					
+				}else{
+
 					if ( scope.enablePan === false ) return;
-					// if ( state !== STATE.TOUCH_PAN ) return;
+					if ( state !== STATE.TOUCH_PAN ) return; // is this needed?...
 
 					handleTouchMovePan( event );
+
 				}
 
+				
 				break;
 
 			// case 3: // three-fingered touch: pan
