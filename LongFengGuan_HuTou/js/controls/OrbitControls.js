@@ -588,7 +588,7 @@ THREE.OrbitControls = function ( object, domElement ) {
 		dollyStart.set( 0, distance );
 
 		SZStart1.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY);
-		SZStart2.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY);
+		SZStart2.set( event.touches[ 1 ].pageX, event.touches[ 1 ].pageY);
 
 	}
 
@@ -643,20 +643,20 @@ THREE.OrbitControls = function ( object, domElement ) {
 			dollyIn( getZoomScale() );
 
 		}
+		console.log("dollyDelt.y"+dollyDelta.y);
 
 		dollyStart.copy( dollyEnd );
 
 		scope.update();
-		
-		SZEnd1.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
-				SZEnd2.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
-				XiangLiang1.subVectors( SZEnd1, SZStart1 );
-				XiangLiang2.subVectors( SZEnd2, SZStart2 );
 
 		SZEnd1.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
-				SZEnd2.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
-				XiangLiang1.subVectors( SZEnd1, SZStart1 );
-				XiangLiang2.subVectors( SZEnd2, SZStart2 );
+		SZEnd2.set( event.touches[ 1 ].pageX, event.touches[ 1 ].pageY );
+		XiangLiang1.subVectors( SZEnd1, SZStart1 );
+		XiangLiang2.subVectors( SZEnd2, SZStart2 );
+
+
+				console.log("XiangLiang1"+XiangLiang1.y);
+				console.log("XiangLiang2"+XiangLiang2.y);
 
 
 
@@ -818,12 +818,10 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 			case 2:	// two-fingered touch: dolly
 
-<<<<<<< HEAD
+				
 
-				if (XiangLiang1/XiangLiang2<0) {
-=======
-				if ((XiangLiang1.y>0&&XiangLiang2.y<0)||(XiangLiang1.y<0&&XiangLiang2.y>0)) {
->>>>>>> 208d19124173f2f0b4a688901c1d8db404542465
+
+				if (XiangLiang1.y/XiangLiang2.y<0) {
 
 					if ( scope.enableZoom === false ) return;
 
@@ -891,7 +889,7 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 
 				
-				if (XiangLiang1/XiangLiang2<0) {
+				if (XiangLiang1.y/XiangLiang2.y<0) {
 
 					if ( scope.enableZoom === false ) return;
 					if ( state !== STATE.TOUCH_DOLLY ) return; // is this needed?...
