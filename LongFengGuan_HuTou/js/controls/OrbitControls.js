@@ -649,10 +649,7 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 		scope.update();
 
-		SZEnd1.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
-		SZEnd2.set( event.touches[ 1 ].pageX, event.touches[ 1 ].pageY );
-		XiangLiang1.subVectors( SZEnd1, SZStart1 );
-		XiangLiang2.subVectors( SZEnd2, SZStart2 );
+		
 
 
 				console.log("XiangLiang1"+XiangLiang1.y);
@@ -679,6 +676,10 @@ THREE.OrbitControls = function ( object, domElement ) {
 	}
 
 	function handleTouchEnd( event ) {
+		SZEnd1.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
+		SZEnd2.set( event.touches[ 1 ].pageX, event.touches[ 1 ].pageY );
+		XiangLiang1.subVectors( SZEnd1, SZStart1 );
+		XiangLiang2.subVectors( SZEnd2, SZStart2 );
 
 		//console.log( 'handleTouchEnd' );
 
