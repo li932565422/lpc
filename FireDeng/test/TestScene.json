@@ -1,0 +1,1 @@
+{"type":"Scene","props":{"width":1920,"runtime":"script/GameUI.ts","positionVariance_0":100,"maxPartices":100,"height":1080},"compId":1,"child":[{"type":"Button","props":{"width":150,"var":"Btn_Fire","stateNum":1,"skin":"comp/ran_normal.png","right":100,"labelSize":20,"height":150,"centerY":0},"compId":20}],"loadList":["comp/ran_normal.png"],"loadList3D":[]}
