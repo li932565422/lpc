@@ -47,7 +47,7 @@
 
 [虎头罐]( https://li932565422.github.io/lpc/LongFengGuan_HuTou/index.html)
 
-[屏互动]( https://li932565422.github.io/lpc/mobile/index.html)
+[点灯]( https://li932565422.github.io/lpc/FireDeng/index.html)
 
 
 
