@@ -1,6 +1,6 @@
 # lpc
 
-[3D_压缩模型展示]( https://li932565422.github.io/lpc/3D压缩/javascript/example/webgl_loader_draco.html)
+[虚拟仿真测试]( https://li932565422.github.io/lpc/虚拟仿真/index.html)
 
 [网页AR-刻字瓶]( https://li932565422.github.io/lpc/AR.js_webAR/KeZiPing.html)
 
